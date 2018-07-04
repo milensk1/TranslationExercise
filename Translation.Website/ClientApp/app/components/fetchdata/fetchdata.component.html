@@ -1,0 +1,57 @@
+<h1>Translation history</h1>
+
+<p>This component is fetching the history from the server.</p>
+
+<p *ngIf="!translations"><em>Loading...</em></p>
+
+<table class='table' *ngIf="translations">
+    <thead>
+        <tr>
+            <th>
+                <button type="button"
+                        class="btn"
+                        (click)="sort('date')">
+                    Date
+                    <span class="glyphicon {{ sortIcons.date }}" aria-hidden="true"></span>
+                </button>
+            </th>
+            <th>
+                <button type="button" class="btn" (click)="sort('from')">
+                    From Language
+                    <span class="glyphicon {{ sortIcons.from }}" aria-hidden="true"></span>
+                </button>
+            </th>
+            <th>
+                <button type="button" class="btn" (click)="sort('to')">
+                    To Language
+                    <span class="glyphicon {{ sortIcons.to }}" aria-hidden="true"></span>
+                </button>
+            </th>
+            <th>
+                <button type="button" class="btn" (click)="sort('result')">
+                    Result
+                    <span class="glyphicon {{ sortIcons.result }}" aria-hidden="true"></span>
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let translation of translations">
+            <td class="col-md-1">{{ translation.date }}</td>
+            <td class="col-md-2">{{ translation.from }}</td>
+            <td class="col-md-2">{{ translation.to }}</td>
+            <td class="col-md-4">{{ translation.result }}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+<nav>
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" (click)="changePage(-1)">Previous</a></li>
+        <li *ngFor="let page of pageState.pages" class="page-item" [class.active]="page === pageState.currentPage">
+            <a class="page-link" (click)="changePage(page)"> {{ page }} </a>
+        </li>
+        <li class="page-item"><a class="page-link" (click)="changePage(0)">Next</a></li>
+    </ul>
+</nav>

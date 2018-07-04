@@ -1,0 +1,12 @@
+*.dll
+*.pdb
+*.obj
+*.user
+*.suo
+*.usersettings
+bin
+obj
+vs
+packages
+artifacts
+/.vs/config/applicationhost.config

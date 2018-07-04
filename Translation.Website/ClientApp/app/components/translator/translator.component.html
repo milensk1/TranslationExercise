@@ -1,0 +1,57 @@
+<h1>Translator</h1>
+
+<p>Please enter your text in the field bellow:</p>
+
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-4 pull">
+
+            <div class="btn-group pull-right">
+                <dropdown [title]="from.name"
+                          [rightaligned]="rightaligned"
+                          (onLanguageSelected)="setFrom($event)">
+                </dropdown>
+            </div>
+
+            <textarea [value]="fromText"
+                      (input)="fromText = $event.target.value"
+                      class="form-control"
+                      rows="4"
+                      placeholder="...">
+            </textarea>
+
+        </div>
+
+        <div class="form-group col-md-2 text-center">
+            <button type="button"
+                    class="btn btn-default mb-2"
+                    (click)="reverseLanguages()">
+                <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
+            </button>
+            <br />
+            <br />
+            <button type="submit"
+                    class="btn btn-primary mb-2"
+                    (click)="translateText()">
+                Translate!
+            </button>
+        </div>
+
+        <div class="form-group col-md-4">
+
+            <div class="btn-group">
+                <dropdown [title]="to.name"
+                          (onLanguageSelected)="setTo($event)">
+                </dropdown>
+            </div>
+
+            <textarea [value]="toText"
+                      (input)="toText = $event.target.value"
+                      class="form-control"
+                      rows="4"
+                      disabled>
+            </textarea>
+
+        </div>
+    </div>
+</form>
