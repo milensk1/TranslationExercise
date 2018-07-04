@@ -31,13 +31,13 @@ export class TranslatorComponent {
     }
 
     reverseLanguages() {
-        if (this.from.id === 0) {
+        if (this.from.id === 0 && this.to.id != 0) {
             this.from = this.to;
             this.to = { id: 0, name: 'To' };
-        } else if (this.to.id === 0) {
+        } else if (this.to.id === 0 && this.from.id != 0) {
             this.to = this.from;
             this.from = { id: 0, name: 'From' };
-        } else {
+        } else if (this.to.id != 0 && this.from.id != 0){
             var temp = this.from;
             this.from = this.to;
             this.to = temp;
