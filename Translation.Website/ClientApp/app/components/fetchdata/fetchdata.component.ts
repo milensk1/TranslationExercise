@@ -66,10 +66,17 @@ export class FetchDataComponent {
 
     public sortData(param: string, sortBy: string) {
         this.allTranslations.sort(function (a, b) {
-            let propA = a[param];
-            let propB = b[param];
+            let propA: any;
+            let propB: any;
             let correction = sortBy === 'ASC' ? 1 : -1;
 
+            if (param != 'date') {
+                propA = a[param];
+                propB = b[param];
+            } else {
+                propA = Date.parse(a[param]);
+                propB = Date.parse(b[param]);
+            }
             if (propA < propB) {
                 return -1 * correction;
             } else if (propA > propB) {
